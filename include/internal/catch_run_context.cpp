@@ -11,7 +11,7 @@
 
 namespace Catch {
 
-    namespace generators {
+    namespace Generators {
         struct GeneratorTracker : TestCaseTracking::TrackerBase, IGeneratorTracker {
             size_t m_index = static_cast<size_t>( -1 );
             GeneratorBasePtr m_generator;
@@ -193,7 +193,7 @@ namespace Catch {
         return true;
     }
     auto RunContext::acquireGeneratorTracker( SourceLineInfo const& lineInfo ) -> IGeneratorTracker& {
-        using namespace generators;
+        using namespace Generators;
         GeneratorTracker& tracker = GeneratorTracker::acquire( m_trackerContext, TestCaseTracking::NameAndLocation( "generator", lineInfo ) );
         assert( tracker.isOpen() );
         m_lastAssertionInfo.lineInfo = lineInfo;

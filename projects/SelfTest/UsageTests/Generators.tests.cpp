@@ -3,7 +3,7 @@
 // Tests of generartor implementation details
 
 TEST_CASE("Generators impl", "[impl]") {
-    using namespace Catch::generators;
+    using namespace Catch::Generators;
 
     SECTION( "range" ) {
         auto gen = range(1,3);
@@ -69,7 +69,7 @@ TEST_CASE("Generators impl", "[impl]") {
 }
 
 TEST_CASE("Generators impl - random", "[approvals]") {
-    using namespace Catch::generators;
+    using namespace Catch::Generators;
 
     SECTION( "random range" ) {
         auto gen = random( 3, 8 );

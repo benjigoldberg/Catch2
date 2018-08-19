@@ -15,7 +15,7 @@ namespace Catch {
 
 IGeneratorTracker::~IGeneratorTracker() {}
 
-namespace generators {
+namespace Generators {
 
     GeneratorBase::~GeneratorBase() {}
 
@@ -41,5 +41,5 @@ namespace generators {
     }
 
 
-} // namespace generators
+} // namespace Generators
 } // namespace Catch

@@ -12,7 +12,7 @@
 
 namespace Catch {
 
-    namespace generators {
+    namespace Generators {
         class GeneratorBase {
         protected:
             size_t m_size = 0;
@@ -24,13 +24,13 @@ namespace Catch {
         };
         using GeneratorBasePtr = std::unique_ptr<GeneratorBase>;
 
-    } // namespace generators
+    } // namespace Generators
 
     struct IGeneratorTracker {
         virtual ~IGeneratorTracker();
         virtual auto hasGenerator() const -> bool = 0;
-        virtual auto getGenerator() const -> generators::GeneratorBasePtr const& = 0;
-        virtual void setGenerator( generators::GeneratorBasePtr&& generator ) = 0;
+        virtual auto getGenerator() const -> Generators::GeneratorBasePtr const& = 0;
+        virtual void setGenerator( Generators::GeneratorBasePtr&& generator ) = 0;
         virtual auto getIndex() const -> std::size_t = 0;
     };
 
