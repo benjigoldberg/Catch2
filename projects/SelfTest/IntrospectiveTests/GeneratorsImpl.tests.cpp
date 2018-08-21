@@ -98,7 +98,7 @@ TEST_CASE( "strlen3" ) {
 
 // A nod towards property-based testing - generate a random selection of numbers
 // in a range and assert on global properties those numbers.
-auto square( int i ) -> int { return i*i; }
+static auto square( int i ) -> int { return i*i; }
 
 TEST_CASE( "Random numbers in a range", "[.][approvals]" ) {
     auto x = GENERATE( random( -10000, 10000 ) );
