@@ -122,14 +122,14 @@ namespace Generators {
     template<typename T>
     auto all() -> Generator<T> { return RequiresASpecialisationFor<T>(); }
 
+    template<>
+    auto all<int>() -> Generator<int>;
+
 
     template<typename T>
     auto range( T const& first, T const& last ) -> Generator<T> {
         return Generator<T>( (last-first), pf::make_unique<RangeGenerator<T>>( first, last ) );
     }
-    template<>
-    auto all<int>() -> Generator<int>;
-
 
     template<typename T>
     auto random( T const& first, T const& last ) -> Generator<T> {
