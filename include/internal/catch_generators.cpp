@@ -9,8 +9,9 @@
 #include "catch_random_number_generator.h"
 #include "catch_interfaces_capture.h"
 
+#include <algorithm>
+#include <numeric>
 #include <limits>
-#include <set>
 
 namespace Catch {
 
@@ -23,17 +24,18 @@ namespace Generators {
     std::vector<size_t> randomiseIndices( size_t selectionSize, size_t sourceSize ) {
 
         assert( selectionSize <= sourceSize );
-        std::vector<size_t> indices;
-        indices.reserve( selectionSize );
-        std::uniform_int_distribution<size_t> uid( 0, sourceSize-1 );
 
-        std::set<size_t> seen;
-        // !TBD: improve this algorithm
-        while( indices.size() < selectionSize ) {
-            auto index = uid( rng() );
-            if( seen.insert( index ).second )
-                indices.push_back( index );
+        std::vector<size_t> indices( selectionSize );
+        std::iota(indices.begin(), indices.end(), 0);
+
+        // Plain old boring F-Y shuffle
+        const auto swaps = std::min(selectionSize - 1, sourceSize - 2);
+        for (size_t i = 0; i < swaps; ++i) {
+            std::uniform_int_distribution<size_t> selectionRange(i, sourceSize - 1);
+            auto swapIdx = selectionRange( rng() );
+            std::swap(indices[i], indices[swapIdx]);
         }
+
         return indices;
     }
 
