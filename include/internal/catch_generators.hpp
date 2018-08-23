@@ -13,7 +13,6 @@
 #include <memory>
 #include <vector>
 #include <cassert>
-#include <limits>
 
 #include <utility>
 
@@ -129,9 +128,7 @@ namespace Generators {
         return Generator<T>( (last-first), pf::make_unique<RangeGenerator<T>>( first, last ) );
     }
     template<>
-    inline auto all<int>() -> Generator<int> {
-        return range( std::numeric_limits<int>::min(), std::numeric_limits<int>::max()-1 );
-    }
+    auto all<int>() -> Generator<int>;
 
 
     template<typename T>
