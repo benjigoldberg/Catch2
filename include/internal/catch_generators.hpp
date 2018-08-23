@@ -126,7 +126,7 @@ namespace Generators {
 
     template<typename T>
     auto range( T const& first, T const& last ) -> Generator<T> {
-        return Generator<T>( 1+(last-first), pf::make_unique<RangeGenerator<T>>( first, last ) );
+        return Generator<T>( (last-first), pf::make_unique<RangeGenerator<T>>( first, last ) );
     }
     template<>
     inline auto all<int>() -> Generator<int> {
